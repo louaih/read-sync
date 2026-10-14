@@ -14,7 +14,12 @@ Do all of this on PC 1, then repeat steps 2 to 5 on PC 2 once PC 1's library has
 
 In calibre: **File > Switch/create library > Move/copy the current library**, and pick a folder inside OneDrive (or your sync tool of choice), for example `OneDrive\Books`. Using calibre's own move keeps every book's internal id intact, which matters because this tool identifies books by that id, not by file path. Let it finish syncing to your sync provider before touching the second PC.
 
-If you use OneDrive, right-click that `Books` folder and choose **Always keep on this device**, so SumatraPDF always has a real local file to open instead of an online-only placeholder.
+Whatever sync tool you use, make sure that folder is kept as real local files, not cloud-only placeholders, since SumatraPDF and this script both need the actual bytes on disk:
+
+- **OneDrive**: right-click the `Books` folder and choose **Always keep on this device**.
+- **Google Drive for desktop**: the folder needs to be under a location set to **Mirror files**, not **Stream files** (that's a global setting in the Google Drive app's preferences, not a per-folder one). Stream mode leaves placeholders that download on demand, which is exactly what you don't want here.
+- **Dropbox**: right-click the folder and choose **Make available offline** (older clients) or make sure **Local** is selected rather than **Online-only** under Smart Sync.
+- **Syncthing**: files are always local by default, nothing to change.
 
 ### 2. Point calibre at the synced library (second PC only)
 
