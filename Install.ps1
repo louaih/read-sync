@@ -136,7 +136,7 @@ $psExePath = if ($pwsh) { $pwsh.Source } else { (Get-Command powershell.exe).Sou
 $vbs = Join-Path ([Environment]::GetFolderPath('Startup')) 'ReadingSync.vbs'
 $script = Join-Path $appDir 'ReadingSync.ps1'
 @"
-CreateObject("WScript.Shell").Run "$psExePath -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File ""$script""", 0, False
+CreateObject("WScript.Shell").Run """$psExePath"" -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File ""$script""", 0, False
 "@ | Set-Content $vbs -Encoding ASCII
 
 # Stop any old copy (installed by this script before, under either PowerShell host), start the new one now
